@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UtilityBillCalculator.MainPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+
+
+    <StackLayout Padding="20">
+        <Label Text="Utility Bill Calculator" FontSize="25" Padding="60,40,0,30" />
+        <Label Text="Choose Your Province" FontSize="19"/>
+        
+        <Picker x:Name="provincePicker" Title="Select your Province..." SelectedIndexChanged="ProvincePicker_SelectedIndexChanged">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>AB</x:String>
+                    <x:String>BC</x:String>
+                    <x:String>ON</x:String>
+                    <x:String>NL</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Label Text="Day Time Usage (kWh):" FontSize="19" />
+        <Entry x:Name="daytimeUsageEntry" Keyboard="Numeric" Placeholder="Enter the daytime usage"/>
+
+        <Label Text="Evening Time Usage (kWh):" FontSize="19" />
+        <Entry x:Name="eveningUsageEntry" Keyboard="Numeric" Placeholder="Enter the evening usage" />
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Do you use a renewable energy source?" FontSize="19" />
+            <Switch x:Name="renewableSwitch" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" Padding="80,0,0,0">
+            <Button Text="Calculate" Clicked="CalculateButton_Clicked" />
+            <Button Text="Reset"  Clicked="ResetButton_Clicked" />
+        </StackLayout>
+
+        <Label x:Name="calculationBreakdownLabel" FontSize="20" HorizontalOptions="Start" LineHeight="1.1" Margin="5"/>
+        <Label x:Name="totalBillLabel" FontSize="19" FontAttributes="Bold" TextColor="Goldenrod" Background="LightGoldenrodYellow" HorizontalOptions="Center" Margin="10,20,0,0" />
+    </StackLayout>
+
+</ContentPage>
